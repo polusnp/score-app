@@ -1,10 +1,14 @@
+import { useContext } from "react"
+import { Context } from "../App"
+
 function ButtonAdd(props) {
-  const { number, addScore } = props
+  const store = useContext(Context)
+  const { number } = props
   return (
     <button
       className="score-button"
       onClick={() => {
-        addScore(number)
+        store.addScore(number)
       }}
     >
       {number}

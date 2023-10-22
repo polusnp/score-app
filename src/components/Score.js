@@ -1,17 +1,13 @@
-function Score(props) {
-  const { score, setScore } = props
-  const handleReset = () => {
-    setScore(0)
-  }
+import ButtonReset from "./ButtonReset"
+import CurrentScore from "./CurrentScore"
 
+function Score() {
   return (
     <div className="score-container">
       <h1>Your score</h1>
       <div className="score-wrap">
-        <div className="score">{score}</div>
-        <button onClick={handleReset} className="score-button">
-          RESET
-        </button>
+        <CurrentScore />
+        <ButtonReset />
       </div>
     </div>
   )

@@ -1,7 +1,9 @@
 import "./App.css"
 import AddScore from "./components/AddScore"
 import Score from "./components/Score"
-import { useState } from "react"
+import { createContext, useState } from "react"
+
+export const Context = createContext()
 
 function App() {
   const [score, setScore] = useState(100)
@@ -9,11 +11,18 @@ function App() {
   const addScore = (number) => {
     setScore(score + number)
   }
+  const value = {
+    score,
+    setScore,
+    addScore,
+  }
   return (
-    <div className="App">
-      <Score score={score} setScore={setScore} />
-      <AddScore addScore={addScore} />
-    </div>
+    <Context.Provider value={value}>
+      <div className="App">
+        <Score />
+        <AddScore />
+      </div>
+    </Context.Provider>
   )
 }
 
